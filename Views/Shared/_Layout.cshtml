@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title </title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Social Events", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Add a Event","Create","Gigs")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; Credit  = > <strong>Chandrakanth</strong> </p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/lib")
+    @Scripts.Render("~/bundles/app");
+    @RenderSection("scripts", required: false)
+<script type="text/x-template" id="notifications-template">
+   <ul class="notifications">
+       <%
+            _.each(notifications,function(notification){
+                if(notification.type == 1){ %>
+                    <li><%= notification.gig.artist.name  %> has cancelled the gig at <%= notification.gig.venue%> at<%= notification.gig.dateTime%></li>
+               <% }
+                else if(notification.type == 2){ %>
+                <li><%= notification.gig.artist.name  %> has Updated the gig at <%= notification.gig.venue%> at<%= notification.gig.dateTime%></li>
+                <% }
+                else if(notification.type == 1){ %>
+                <li><%= notification.gig.artist.name  %> has Created the gig at <%= notification.gig.venue%> at<%= notification.gig.dateTime%></li>
+                <% }
+            })
+       %>
+   </ul>
+</script>
+<script>
+    $(document).ready(function () {
+        $.getJSON("/api/notifications",
+            function (notifications) {
+                if (notifications.length == 0)
+                    return;
+                $('.js-notifications-count')
+                    .text(notifications.length)
+                    .removeClass('hide')
+                    .addClass('animated bounceInDown');
+
+                $('.notifications').popover({
+                    html: true,
+                    title: "Notifications",
+                    content: function() {
+                        var compile = _.template($('#notifications-template').html());
+                        return  compile({notifications:notifications});
+                    },
+                    placement:"bottom"
+                }).on("shown.bs.popover", function() {
+                    $.post("/api/notifications", { isRead: true })
+                        .done(function() {
+                            $('.js-notifications-count').text("").addClass("hide");
+                        })
+                        .fail(function(error) {
+                            console.log(error.message);
+                        })
+                });
+
+            });
+    })
+</script>
+</body>
+</html>

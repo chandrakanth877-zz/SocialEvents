@@ -1,0 +1,196 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+span.field-validation-error {
+    color: red;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+/*Bootstrap Overrides*/
+
+body {
+    font-size: 17px;
+}
+
+.navbar-inverse {
+    background-color: #ff4342;
+    border-color: #ff4342;
+}
+
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #ffffff;
+}
+.navbar-inverse .navbar-brand {
+    color: #ffffff;
+}
+
+.navbar-inverse .navbar-toggle {
+    border-color: #ffffff;
+}
+
+    .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+        border-color: #ffffff;
+    }
+
+    .navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+        background-color: #9e6565;
+    }
+
+.navbar-inverse .notifications  {
+    position: relative;
+}
+
+.navbar-inverse .notifications .badge {
+    position: absolute;
+    top: 8px;
+    right: 0;
+    background: #a80a0a;
+}
+
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: Lato, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    font-size: 17px;
+    height: 44px;
+    -ms-border-radius: 9PX;
+    border-radius: 9PX;
+}
+
+.form-control:focus {
+    border-color: #2196f3;
+    box-shadow: none;
+}
+
+.btn {
+    /*font-size: 17px;
+    padding: 7px 20px;*/
+    border-radius: 9px;
+}
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #ffffff;
+    background-color: #d82e2d;
+}
+
+.navbar-inverse .navbar-nav > .dropdown > a .caret {
+    border-top-color: #fdfdfd;
+    border-bottom-color: #ffffff;
+}
+
+.dropdown-menu {
+    box-shadow: none;
+}
+
+.navbar-brand {
+    font-weight: 700;
+}
+
+/*Page Specific Styles*/
+.gigs {
+    margin-top: 20px;
+}
+.gigs > li {
+    position: relative;
+    margin-bottom: 30px;
+    list-style: none;
+}
+
+.gigs >li .date {
+    background: red;
+    text-align: center;
+    width: 60px;
+    color: white;
+    border-radius: 8px;
+}
+
+.gigs > li .date .month {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 6px;
+}
+
+.gigs > li .date .day {
+    background: #f7f7f7;
+    color: #333;
+    font-size: 20px;
+    padding-bottom: 5px;
+}
+
+.gigs > li .details {
+    position: absolute;
+    top: 0px;
+    left: 70px;
+    width: 120px;
+}
+
+    .gigs > li .details .artist {
+        font-weight: bold;
+        display: block;
+        width: 240px;
+    }
+
+.gigs > li .details .genre {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.gigs > li .actions {
+    font-size: 15px;
+    display: none
+}
+
+.gigs > li:hover .actions {
+    display: block;   
+}
+
+ul.notifications {
+    list-style: none;
+    padding-left: 0;
+}
+
+ul.notifications > li {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+ul.notifications > li:last-child {
+       border-bottom: none 
+}
+
+#searchGigs {
+    width: 300px;
+}
